@@ -9,15 +9,17 @@ function execCalc() {
 
     pesos = prompt("Ingresá la cantidad de pesos que querés vender:");
     pesos = parseFloat(pesos);
+    console.log("pesos: " + pesos);
 
-    while (pesos == NaN) {
-        pesos = prompt("Error. Ingresá un número válido:");
-        pesos = parseFloat(pesos);
-    }
-
-    if (pesos == 0) {
-        alert("Con $0 ni agua comprás.");
-        return;
+    while (isNaN(pesos) || pesos == 0) {
+        while (isNaN(pesos)) {
+            pesos = prompt("Error. Ingresá un número válido:");
+            pesos = parseFloat(pesos);
+        }
+        while (pesos == 0) {
+            pesos = prompt("Ingresá un valor mayor que 0:");
+            pesos = parseFloat(pesos);
+        }
     }
 
     divisa = prompt("Que divisa querés calcular?:");
@@ -50,6 +52,9 @@ function execCalc() {
 for (i = 3; i >= 1; i--) {
     userInput = prompt("Hola! Ingresá el password para ejecutar la calculadora:");
     if (pass != userInput) {
+        if (i == 1) {
+            break;
+        }
         alert("Contraseña incorrecta, te quedan " + (i - 1) + " intentos mas");
     } else {
         passOk = true;
