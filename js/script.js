@@ -1,5 +1,20 @@
-const pass = "coder";
 let passOk = false;
+
+function showLogin() {
+    const pass = "coder";
+
+    for (i = 3; i >= 1; i--) {
+        userInput = prompt("Hola! Ingresá el password para ejecutar la calculadora:");
+        if (pass != userInput) {
+            if (i == 1) {
+                return false;
+            }
+            alert("Contraseña incorrecta, te quedan " + (i - 1) + " intentos mas");
+        } else {
+            return true;
+        }
+    }
+}
 
 function execCalc() {
     const valorUSD = 277;
@@ -49,20 +64,7 @@ function execCalc() {
     return;
 }
 
-for (i = 3; i >= 1; i--) {
-    userInput = prompt("Hola! Ingresá el password para ejecutar la calculadora:");
-    if (pass != userInput) {
-        if (i == 1) {
-            break;
-        }
-        alert("Contraseña incorrecta, te quedan " + (i - 1) + " intentos mas");
-    } else {
-        passOk = true;
-        break;
-    }
-}
-
-if (passOk) {
+if ((passOk = showLogin())) {
     alert("Bievenido/a!");
     execCalc();
 } else {
